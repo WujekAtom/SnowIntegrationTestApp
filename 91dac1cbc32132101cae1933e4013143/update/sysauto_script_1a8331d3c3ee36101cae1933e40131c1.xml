@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 11:00:00</entered_time>
+        <max_drift/>
+        <name>Automate Incident Closing After X days</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2026-01-25 10:23:09</run_start>
+        <run_time>1970-01-01 11:06:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[var xDaysAgo = new GlideDateTime(); // current local datetime
+xDaysAgo.addDaysLocalTime(-1); // substracting 1 day; setting new day for searching incidents
+
+var gr = new GlideRecord('incident');
+gr.addQuery('state', 6);
+gr.addQuery('reopen_count', 0);
+gr.addQuery('sys_created_on', '<', xDaysAgo);
+gr.query();
+
+while (gr.next()){
+	// close found resolved incidents
+
+	gr.setValue('state', 7);
+	gr.update();
+
+	gs.info('Incident ' + gr.getValue('number') + ' closed');
+
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-01-25 10:49:42</sys_created_on>
+        <sys_id>1a8331d3c3ee36101cae1933e40131c1</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Automate Incident Closing After X days</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sysauto_script_1a8331d3c3ee36101cae1933e40131c1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-25 11:13:15</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

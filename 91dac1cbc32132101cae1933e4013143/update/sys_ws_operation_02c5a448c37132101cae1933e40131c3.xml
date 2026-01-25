@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>54aae0c4c3b132101cae1933e4013107</enforce_acl>
+        <http_method>POST</http_method>
+        <name>Create Incident</name>
+        <operation_script><![CDATA[(function process( /*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+        try {
+            //Get attributes values from request
+            var payload = request.body.data;
+
+            var num = payload.number;
+            var corr_id = payload.correlation_id;
+            var sh_desc = payload.short_description;
+            var desc = payload.description;
+            var impa = payload.impact;
+            var urg = payload.urgency;
+
+            //Short description is mandatory
+            if (corr_id != '') {
+
+                var myError = new sn_ws_err.ServiceError();
+                myError.setStatus(442);
+                myError.setMessage('Correlation_id must be empty');
+                myError.setDetail('We cannot create the incident because correlation_id attribute you sent has value.');
+                return myError;
+
+            } else {
+
+                var gr = new GlideRecord("incident");
+                gr.addQuery('correlation_id', num);
+                gr.query();
+
+                if (gr.next()) {
+
+                    var myError2 = new sn_ws_err.ServiceError();
+                    myError2.setStatus(442);
+                    myError2.setMessage('Check number attribute.');
+                    myError2.setDetail('Check Incident number. We cannot create the incident because sent Incident number already exist in our database.');
+                    return myError2;
+
+                } else {
+
+                gr.initialize();
+
+                gr.correlation_id = num;
+                gr.short_description = sh_desc;
+                gr.description = desc;
+                gr.impact = impa;
+                gr.urgency = urg;
+
+                gr.insert();
+
+                response.setContentType('application/json');
+                response.setBody({
+                    Number: gr.number,
+					Correlation_id: gr.correlation_id,
+                    Short_Description: gr.short_description,
+                    Result: "New incident hes been created"
+                });
+
+                response.setStatus(200);
+            }
+        }
+
+    } catch (err) {
+        var exp = new sn_ws_err.BadRequestError(err);
+        response.setError(exp);
+    }
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1044869_tomek_0/tomek_api/create_incident</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/create_incident</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-08 19:46:46</sys_created_on>
+        <sys_id>02c5a448c37132101cae1933e40131c3</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Create Incident</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_ws_operation_02c5a448c37132101cae1933e40131c3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-08 19:59:13</sys_updated_on>
+        <web_service_definition display_value="Tomek_API">5cfb14c8c33132101cae1933e40131f4</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

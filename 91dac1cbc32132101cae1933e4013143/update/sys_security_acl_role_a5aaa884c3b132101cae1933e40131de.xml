@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-08 19:58:36</sys_created_on>
+        <sys_id>a5aaa884c3b132101cae1933e40131de</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>.x_1044869_tomek_0.integration_user_role</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_security_acl display_value="/api/x_1044869_tomek_0/tomek_api/create_incident">54aae0c4c3b132101cae1933e4013107</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_a5aaa884c3b132101cae1933e40131de</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-12-08 19:58:36</sys_updated_on>
+        <sys_user_role display_value="x_1044869_tomek_0.integration_user_role" name="x_1044869_tomek_0.integration_user_role">2ddac1cbc32132101cae1933e401316e</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

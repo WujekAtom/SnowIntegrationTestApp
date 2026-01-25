@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>3f29a404c3b132101cae1933e4013114</enforce_acl>
+        <http_method>GET</http_method>
+        <name>Get Incident</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    //Get attributes values from request
+    var params = request.queryParams;
+    var num = params.number;
+
+    try {
+
+        //Number value is mandatory
+        if (num == '' || num == null) {
+
+            var myError = new sn_ws_err.ServiceError();
+            myError.setStatus(442);
+            myError.setMessage('Number cannot be empty!');
+            myError.setDetail('We recognized the number attribute you sent has no value. Complete the number and send the request again.');
+            return myError;
+
+        } else {
+
+            var gr = new GlideRecord("incident");
+            gr.addQuery('number', num);
+            gr.query();
+
+            if (gr.next()) {
+
+                response.setContentType('application/json');
+                response.setBody({
+                    Result: "The Incident hes been found",
+                    Number: gr.number,
+                    Short_description: gr.short_description,
+                    Priority: gr.priority,
+                    Assigment_group: gr.assignment_group,
+                    Assigned_to: gr.assigned_to,
+                });
+
+                response.setStatus(200);
+            }
+			else {
+/*				var notFoundError = new sn_ws_err.ServiceError();
+				notFoundError.setStatus(404);
+				notFoundError.setMessage('Incident with number ' + num + ' has not been found');
+				notFoundError.setDetail('Incident number does not exist');
+				return notFoundError;
+				*/
+
+				response.setError(new sn_ws_err.NotFoundError('Incident ' + num + ' was not found'));
+				return;
+			}
+
+        }
+
+    } catch (err) {
+        var exp = new sn_ws_err.BadRequestError(err);
+        response.setError(exp);
+    }
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1044869_tomek_0/tomek_api/get_incident</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/get_incident</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-12-08 19:02:39</sys_created_on>
+        <sys_id>b77d948cc33132101cae1933e4013129</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Get Incident</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_ws_operation_b77d948cc33132101cae1933e4013129</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-01-23 16:07:24</sys_updated_on>
+        <web_service_definition display_value="Tomek_API">5cfb14c8c33132101cae1933e40131f4</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
