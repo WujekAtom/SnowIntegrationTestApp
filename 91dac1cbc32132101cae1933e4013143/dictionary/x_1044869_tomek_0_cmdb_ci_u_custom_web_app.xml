@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e5972ba4c3f232101cae1933e4013109" extends="cmdb_ci_appl" label="Custom Web App" max_length="40" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" type="collection">
+        <element label="vhost_name" max_length="40" name="u_vhost_name" type="string"/>
+        <element label="config_file" max_length="40" name="u_config_file" type="string"/>
+        <element label="version" max_length="40" name="u_version" type="string"/>
+    </element>
+</database>

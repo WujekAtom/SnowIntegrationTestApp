@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1044869_tomek_0.OutboundEventProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>OutboundEventProcessor</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var OutboundEventProcessor = Class.create();
+OutboundEventProcessor.prototype = {
+    initialize: function() {},
+
+    process: function(target) {
+
+        var gr = new GlideRecord('x_1044869_tomek_0_outbound_event');
+        gr.addQuery('u_target', target);
+        gr.addQuery('u_status', 'NEW');
+		gr.addQuery('u_retry_count', '<', 5);
+        gr.orderBy('sys_created_on');
+        gr.setLimit(50);
+        gr.query();
+
+        while (gr.next()) {
+            try {
+				gs.info('Outbound Event processing: ' + gr.sys_id);
+                gr.u_status = 'PROCESSING';
+                gr.update();
+                this.sendEvent(gr);
+
+                gr.u_status = 'SENT';
+                gr.update();
+				gs.info('Outbound Event SENT: ' + gr.sys_id);
+            } catch (err) {
+                gr.u_status = 'ERROR';
+                gr.u_last_error = err.message;
+                gr.u_retry_count = (gr.u_retry_count || 0) + 1;
+                gr.update();
+            }
+
+        }
+
+    },
+
+    sendEvent: function(grObj) {
+
+        var payloadToNiFi = grObj.u_payload;
+        var r = new sn_ws.RESTMessageV2('x_1044869_tomek_0.NiFi webserver', 'POST');
+        r.setStringParameterNoEscape('payload', payloadToNiFi);
+
+        var response = r.execute();
+        var responseBody = response.getBody();
+        var httpStatus = response.getStatusCode();
+
+		if (httpStatus <200 || httpStatus >= 300){
+			throw new Error('HTTP error: ' + httpStatus);
+		}
+
+    },
+
+	testProcessor: function(input){
+		gs.info("Provided input: " + input);
+
+		return "SUCCESS";
+	},
+
+    type: 'OutboundEventProcessor'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-10 16:34:39</sys_created_on>
+        <sys_id>cd4e29e5c3a3ba101cae1933e401310d</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>OutboundEventProcessor</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_cd4e29e5c3a3ba101cae1933e401310d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-12 17:22:28</sys_updated_on>
+    </sys_script_include>
+</record_update>

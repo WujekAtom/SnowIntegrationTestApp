@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>54aae0c4c3b132101cae1933e4013107</enforce_acl>
+        <http_method>POST</http_method>
+        <name>OLD_Create_card</name>
+        <operation_script><![CDATA[// sn-scriptsync - Received from background script tab via SN Utils.
+
+// CREATE CARD - POST METHOD
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+   // Parse JSON payload
+    var payload = request.body.data;
+
+    if (!payload) {
+        gs.error("No payload in request");
+        response.setStatus(400);
+        return;
+    }
+
+    var trelloCardId = payload.u_trello_card_id;
+
+    if (!trelloCardId) {
+        gs.error("Missing Trello card ID in payload");
+        response.setStatus(400);
+        return;
+    }
+
+    // Check if card exist - u_trello_card_id is external ID
+    var gr = new GlideRecord('vtb_card');  
+    gr.addQuery('u_trello_card_id', trelloCardId);
+    gr.query();
+
+    if (gr.next()) {
+        // Card exist so return info and don't create a card
+        gs.info("Card already exist: " + gr.getUniqueValue());
+        var existingData = {
+            sys_id: gr.getUniqueValue(),
+            message: "Card with Trello ID '" + trelloCardId + "' already exist",
+            short_description: gr.short_description
+        };
+        response.setBody(existingData);
+        response.setStatus(409);
+        return;
+    }
+
+    // Create new private task
+
+    var newTask = new GlideRecord('vtb_task');
+    newTask.initialize();
+    newTask.short_description = payload.short_description || 'Missing description';
+    newTask.description = payload.u_card_content || '';
+    
+    var newTaskID = newTask.insert();
+
+    // Create new card, assign to private task
+    var newCard = new GlideRecord('vtb_card');
+    newCard.initialize();
+
+    newCard.task = newTaskID;
+    newCard.board = '91428defc3ba72101cae1933e40131c3'; //baby raccon board
+    newCard.lane = getListID(payload.u_list_name);
+    newCard.u_source = payload.u_source || '';
+    newCard.u_trello_card_id = payload.u_trello_card_id;
+    
+    var newCardSysId = newCard.insert();
+
+    if (newCardSysId) {
+        gs.info("Created new card: " + newCardSysId);
+        var result = {
+            sys_id: newCardSysId,
+            message: "New card created succesfully",
+            trello_card_id: trelloCardId
+        };
+        response.setBody(result);
+        response.setStatus(201);
+    } else {
+        gs.error("Error while creating the card");
+        response.setStatus(500);
+    }
+
+    // Get Trello list name and return SYS_ID from corresponding list in Snow
+    function getListID(listName){
+
+        // Default lane is TODO / Do zrobienia
+        var DEFAULT_LANE = '1d424523c3fa72101cae1933e4013137';
+
+        var grList = new GlideRecord('vtb_lane');
+        grList.addQuery('name', listName);
+        grList.query();
+
+        return grList.next() ? grList.sys_id : DEFAULT_LANE;
+
+    }
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1044869_tomek_0/tomek_api/create_card</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/create_card</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-07 12:28:43</sys_created_on>
+        <sys_id>e4dc01a7c33e72101cae1933e40131e2</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>OLD_Create_card</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_ws_operation_e4dc01a7c33e72101cae1933e40131e2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-24 15:35:17</sys_updated_on>
+        <web_service_definition display_value="Tomek_API">5cfb14c8c33132101cae1933e40131f4</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

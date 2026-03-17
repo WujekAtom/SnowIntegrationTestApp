@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_processing_status" label="Processing status" language="en" table="x_1044869_tomek_0_event_cache">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_processing_status</element>
+            <help/>
+            <hint/>
+            <label>Processing status</label>
+            <language>en</language>
+            <name>x_1044869_tomek_0_event_cache</name>
+            <plural>Processing status</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-02-16 19:43:52</sys_created_on>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Processing status</sys_name>
+            <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+            <sys_update_name>sys_documentation_x_1044869_tomek_0_event_cache_u_processing_status_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-02-16 19:49:17</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

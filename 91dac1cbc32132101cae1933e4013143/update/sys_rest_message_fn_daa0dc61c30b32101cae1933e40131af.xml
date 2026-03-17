@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>Get_messages</function_name>
+        <http_method>get</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Docker Atom Server [ Get_messages ]</qualified_name>
+        <rest_endpoint>http://172.17.0.2:5000/get_messages</rest_endpoint>
+        <rest_message display_value="Docker Atom Server">9a709861c30b32101cae1933e4013131</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-13 13:13:12</sys_created_on>
+        <sys_id>daa0dc61c30b32101cae1933e40131af</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Get_messages</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_rest_message_fn_daa0dc61c30b32101cae1933e40131af</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-13 15:50:41</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server display_value="mid_docker">0d2d5be8c37232101cae1933e40131a1</use_mid_server>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

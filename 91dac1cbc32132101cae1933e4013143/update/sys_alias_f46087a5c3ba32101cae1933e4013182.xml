@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias">
+    <sys_alias action="INSERT_OR_UPDATE">
+        <configuration_template/>
+        <connection_type>sys_connection</connection_type>
+        <id>x_1044869_tomek_0.DEV287724</id>
+        <is_internal>false</is_internal>
+        <multiple_connections>false</multiple_connections>
+        <name>DEV287724</name>
+        <parent/>
+        <retry_policy display_value="Default SFTP Retry Policy">e385484773100010e3a71afe2ff6a709</retry_policy>
+        <sys_class_name>sys_alias</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-01 15:45:34</sys_created_on>
+        <sys_id>f46087a5c3ba32101cae1933e4013182</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_1044869_tomek_0.DEV287724</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_alias_f46087a5c3ba32101cae1933e4013182</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-01 17:47:46</sys_updated_on>
+        <type>connection</type>
+    </sys_alias>
+</record_update>

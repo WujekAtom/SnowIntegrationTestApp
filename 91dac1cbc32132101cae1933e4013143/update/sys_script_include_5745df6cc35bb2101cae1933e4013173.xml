@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1044869_tomek_0.CardRepository</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>CardRepository</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var CardRepository = Class.create();
+CardRepository.prototype = {
+    initialize: function() {},
+
+    findCardById: function(cardId) {
+
+        var grCard = new GlideRecord('vtb_card');
+        var cardExist = grCard.get('u_trello_card_id',cardId);
+
+        if (cardExist)
+            return grCard;
+        else return null;
+    },
+
+    findTaskById: function(taskId) {
+
+        var grTask = new GlideRecord('vtb_task');
+        var taskExist = grTask.get(taskId);
+
+        if (taskExist)
+            return grTask;
+		else return null;
+    },
+
+    save: function(cardObj) {
+        cardObj.update();
+    },
+
+	createNewCard: function(){
+		var grCard = new GlideRecord('vtb_card');
+		grCard.initialize();
+		//var newCard = grCard.insert();
+		return grCard;
+	},
+
+	createNewTask: function(){
+
+		var grTask = new GlideRecord('vtb_task');
+		grTask.initialize();
+		//var newTask = grTask.insert();
+		return grTask;
+
+	},
+
+    getListID: function(listName){
+
+        // Default lane is TODO / Do zrobienia
+        var DEFAULT_LANE = '1d424523c3fa72101cae1933e4013137';
+
+        var grList = new GlideRecord('vtb_lane');
+        grList.addQuery('name', listName);
+        grList.query();
+
+        return grList.next() ? grList.sys_id : DEFAULT_LANE;
+
+    },
+
+    type: 'CardRepository'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-23 11:14:22</sys_created_on>
+        <sys_id>5745df6cc35bb2101cae1933e4013173</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>CardRepository</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_5745df6cc35bb2101cae1933e4013173</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-24 15:01:08</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1044869_tomek_0.CardService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>CardService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var CardService = Class.create();
+CardService.prototype = {
+    initialize: function() {
+        this.cardRepo = new CardRepository();
+    },
+
+    archiveCard: function(cardId) {
+
+        if (!cardId) {
+            throw new Error('Card ID missing');
+        }
+
+        var card = this.cardRepo.findCardById(cardId);
+        if (!card) {
+            //throw new Error("Card not found");
+            return {
+                'success': true,
+                'result': 'Card ' + cardId + ' not found',
+                'message': 'Card did not exist in the board. There was nothing to delete'
+            };
+        }
+        if (card.removed == 'true' || card.removed == true) {
+            return;
+        }
+
+        card.removed = true;
+        this.cardRepo.save(card);
+
+        if (card.getValue('task')) {
+            //Card has assigned task
+
+            var task = this.cardRepo.findTaskById(card.task);
+            if (task) {
+                try {
+                    task.active = false;
+                    this.cardRepo.save(task);
+
+                    return {
+                        'success': true,
+                        'result': 'Card ' + cardId + ' has been archived',
+                        'message': 'Related task ' + task + ' has been set to inactive'
+                    };
+                } catch (err) {
+                    gs.error('Failed to update task for card ' + cardId + ': ' + err.message);
+                }
+            }
+        }
+
+
+
+    },
+
+    createCard: function(payload) {
+    
+        var trelloId = payload.u_trello_card_id;
+
+        if (!trelloId) {
+            throw new Error('Trello card ID is missing');
+        }
+
+        var card = this.cardRepo.findCardById(payload.u_trello_card_id);
+        if (card) {
+            throw new Error('Card already exist: ' + payload.u_trello_card_id);
+        }
+
+        // STEP 1: create new task, assign short description and description from payload		
+        var newTask = this.cardRepo.createNewTask();
+        newTask.short_description = payload.short_description;
+        newTask.description = payload.u_card_content;
+		newTask.correlation_id = payload.u_trello_card_id;
+        this.cardRepo.save(newTask);
+
+        // Store task's sys_id to assign it to new card
+        var taskId = newTask.getValue('sys_id');
+
+        // STEP 2: create new ard, assign values from payload, assign task id
+        var newCard = this.cardRepo.createNewCard();
+        newCard.task = taskId;
+        newCard.board = '91428defc3ba72101cae1933e40131c3';
+        newCard.lane = this.cardRepo.getListID(payload.u_list_name);
+        newCard.u_source = payload.u_source;
+        newCard.u_trello_card_id = payload.u_trello_card_id;
+
+        this.cardRepo.save(newCard);
+
+        return {
+            'success': true,
+            'result': 'Card ' + newCard.sys_id + ' has been created',
+            'message': 'Related task ' + newCard.task + ' has been created and assigned to card.'
+        };
+
+    },
+    type: 'CardService'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-22 17:38:36</sys_created_on>
+        <sys_id>a7a3ab98c3db32101cae1933e40131cd</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>CardService</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_a7a3ab98c3db32101cae1933e40131cd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-08 19:25:36</sys_updated_on>
+    </sys_script_include>
+</record_update>

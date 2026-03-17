@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1044869_tomek_0.EventRepository</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>EventRepository</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var EventRepository = Class.create();
+EventRepository.prototype = {
+
+    TABLE: 'x_1044869_tomek_0_event_cache',
+
+    tryCreate: function(payload) {
+
+        try {
+            var gr = new GlideRecord(this.TABLE);
+            gr.initialize();
+
+            gr.u_trello_action_id = payload.u_trello_action_id;
+            gr.u_trello_card_id = payload.u_trello_card_id;
+            gr.u_processing_status = 'Processing';
+            gr.u_event_type_translation_key = payload.u_event_type_translation_key;
+            gr.u_event_date = payload.u_event_date;
+            gr.u_source = payload.u_source;
+            gr.u_error_message = "";
+
+            return gr.insert();
+
+        } catch (err) {
+            return null; // duplicate
+        }
+    },
+
+    markProcessed: function(eventId) {
+
+        var gr = new GlideRecord(this.TABLE);
+        if (gr.get(eventId)) {
+            gr.u_processing_status = 'Processed';
+            gr.u_processed_at = new GlideDateTime();
+            gr.update();
+        }
+    },
+
+    markFailed: function(eventId, errorMessage) {
+
+        var gr = new GlideRecord(this.TABLE);
+        if (gr.get(eventId)) {
+            gr.u_processing_status = 'Failed';
+            gr.u_error_message = errorMessage;
+            gr.update();
+        }
+    },
+
+    type: 'EventRepository'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-17 19:54:25</sys_created_on>
+        <sys_id>99b25ab6c30f32101cae1933e40131c3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>EventRepository</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_99b25ab6c30f32101cae1933e40131c3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-17 19:59:45</sys_updated_on>
+    </sys_script_include>
+</record_update>

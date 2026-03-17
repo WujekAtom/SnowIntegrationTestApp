@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="3744c96ac38f3a101cae1933e4013127" label="Event cache" max_length="40" name="x_1044869_tomek_0_event_cache" type="collection">
+        <element label="Error message" max_length="40" name="u_error_message" type="string"/>
+        <element label="Card ID" max_length="40" name="u_trello_card_id" type="string"/>
+        <element choice="1" label="Processing status" max_length="40" name="u_processing_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="0" value="New"/>
+                <element inactive_on_update="false" label="Ignored" sequence="4" value="Ignored"/>
+                <element inactive_on_update="false" label="Processing" sequence="1" value="Processing"/>
+                <element inactive_on_update="false" label="Processed" sequence="2" value="Processed"/>
+                <element inactive_on_update="false" label="Failed" sequence="3" value="Failed"/>
+            </choice>
+        </element>
+        <element label="Payload" max_length="8000" name="u_raw_payload" type="html"/>
+        <element label="Event type" max_length="40" name="u_event_type_translation_key" type="string"/>
+        <element label="Event timestamp" max_length="40" name="u_event_date" type="string"/>
+        <element label="Action id" max_length="40" name="u_trello_action_id" type="string"/>
+        <element label="Request source" max_length="40" name="u_source" type="string"/>
+        <element label="Processed at" max_length="40" name="u_processed_at" type="glide_date_time"/>
+        <index name="index" unique="true">
+            <element name="u_trello_action_id"/>
+        </index>
+    </element>
+</database>

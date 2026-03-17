@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>vtb_card</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Send to Trello-NiFi</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+
+    // Prepare data for payload
+
+    var data_u_entity = current.getTableName();
+    var data_u_entity_id = current.getUniqueValue();
+    var data_u_operation = '';
+    var data_u_correlation_id = current.getUniqueValue();
+    var data_number = current.getDisplayValue('task');
+    var task_id = current.getValue('task');
+    
+	var data_short_desc = current.task.short_description.getDisplayValue();
+	
+	var data_list_before = previous ? previous.getValue('lane'): '';
+	var data_list_before_display = previous ? previous.getDisplayValue('lane') : '';
+	var data_list_after = current.getValue('lane');
+	var data_list_after_display = current.getDisplayValue('lane');
+    var data_source_system = "servicenow";
+
+	var operation = current.operation();
+
+    if (operation == 'insert') {
+        data_u_operation = 'CARD_CREATE';
+
+    } else if (operation == 'update') {
+        if (current.getValue('removed') == 1) {
+            data_u_operation = 'CARD_REMOVE';
+
+        } else data_u_operation = 'CARD_UPDATE';
+    }
+
+    var payload = {
+        "event_type": data_u_operation,
+        "entity_id": data_u_entity_id,
+        "correlation_id": data_u_correlation_id,
+		"source_system": data_source_system,
+        "data": {
+            "number": data_number,
+            "short_description": data_short_desc,
+			"listBefore": data_list_before,
+			"listBeforeName": data_list_before_display,
+			"listAfter": data_list_after,
+			"listAfterName": data_list_after_display
+        }
+    };
+
+    createOutboundEvent('trello', payload);
+    createOutboundEvent('mariadb', payload);
+
+    function createOutboundEvent(target, payload) {
+        var newCard = new GlideRecord('x_1044869_tomek_0_outbound_event');
+        newCard.initialize();
+        newCard.u_entity = data_u_entity;
+        newCard.u_entity_id = data_u_entity_id;
+        newCard.u_correlation_id = data_u_correlation_id;
+        newCard.u_payload = JSON.stringify(payload);
+        newCard.u_target = target;
+        newCard.u_operation = data_u_operation;
+		newCard.u_status = 'NEW';
+		newCard.u_retry_count = 0;
+
+        newCard.insert();
+    }
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 19:59:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3a0a16dfc3df32101cae1933e40131b8</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>Send to Trello-NiFi</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_3a0a16dfc3df32101cae1933e40131b8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-12 17:43:48</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=3a0a16dfc3df32101cae1933e40131b8"/>
+</record_update>

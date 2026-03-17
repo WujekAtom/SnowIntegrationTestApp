@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="fb262c87c31f32101cae1933e401311c" label="Outbound Event" max_length="40" name="x_1044869_tomek_0_outbound_event" type="collection">
+        <element label="Response" max_length="200" name="u_response" type="string"/>
+        <element label="Operation type" max_length="20" name="u_operation" type="string"/>
+        <element label="Last error" max_length="200" name="u_last_error" type="string"/>
+        <element label="Target" max_length="20" name="u_target" type="string"/>
+        <element label="Entity ID" max_length="60" name="u_entity_id" type="string"/>
+        <element label="Next retry" max_length="40" name="u_next_retry" type="glide_date_time"/>
+        <element label="Entity type / Table" max_length="20" name="u_entity" type="string"/>
+        <element label="Correlation ID" max_length="60" name="u_correlation_id" type="string"/>
+        <element label="Payload" max_length="400" name="u_payload" type="string"/>
+        <element default="0" label="Retry count" max_length="40" name="u_retry_count" type="integer"/>
+        <element label="Source system" max_length="20" name="u_origin" type="string"/>
+        <element label="Status" max_length="15" name="u_status" type="string"/>
+        <index name="index">
+            <element name="u_entity_id"/>
+        </index>
+    </element>
+</database>

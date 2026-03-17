@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1044869_tomek_0.EventProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>EventProcessor</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var EventProcessor = Class.create();
+EventProcessor.prototype = {
+    initialize: function() {
+        this.repo = new EventRepository();
+    },
+
+    process: function(payload) {
+        this.validate(payload);
+
+        var eventID = this.repo.tryCreate(payload);
+        if (!eventID)
+            return {
+                message: "Already processed"
+            };
+
+        try {
+            var handlerFactory = new SourceHandlerFactory();
+            var handler = handlerFactory.getHandler(payload.u_source);
+
+            var handlerResult = handler.handle(payload);
+
+            this.repo.markProcessed(eventID);
+
+            return {
+                handlerResult,
+                eventID: eventID
+            };
+
+        } catch (err) {
+            this.repo.markFailed(eventID, err.message);
+			throw err;
+        }
+
+    },
+
+    validate: function(payload) {
+        if (!payload.u_source)
+            throw new Error('Missing source!');
+
+        if (!payload.u_trello_action_id)
+            throw new Error('Missing Trello ID!');
+    },
+    type: 'EventProcessor'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-17 20:00:56</sys_created_on>
+        <sys_id>91445e76c30f32101cae1933e4013193</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>EventProcessor</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_91445e76c30f32101cae1933e4013193</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-24 15:30:35</sys_updated_on>
+    </sys_script_include>
+</record_update>

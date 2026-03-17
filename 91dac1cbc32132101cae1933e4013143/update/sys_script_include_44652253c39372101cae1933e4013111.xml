@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>false</active>
+        <api_name>x_1044869_tomek_0.OutboundHTTPSender</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>OutboundHTTPSender</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var OutboundHTTPSender = Class.create();
+OutboundHTTPSender.prototype = {
+    initialize: function() {
+    },
+
+    type: 'OutboundHTTPSender'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 20:48:17</sys_created_on>
+        <sys_id>44652253c39372101cae1933e4013111</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>OutboundHTTPSender</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_script_include_44652253c39372101cae1933e4013111</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-11 17:33:03</sys_updated_on>
+    </sys_script_include>
+</record_update>
