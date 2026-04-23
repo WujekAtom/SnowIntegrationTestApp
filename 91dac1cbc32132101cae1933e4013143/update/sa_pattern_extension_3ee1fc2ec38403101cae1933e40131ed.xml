@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sa_pattern_extension">
+    <sa_pattern_extension action="INSERT_OR_UPDATE">
+        <extension display_value="Wordpress steps">4df968fec33732101cae1933e4013167</extension>
+        <order>1</order>
+        <pattern display_value="Apache on UNIX based OS">28d607dbfead4be3887c843814455100</pattern>
+        <sys_class_name>sa_pattern_extension</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-07 11:15:12</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>3ee1fc2ec38403101cae1933e40131ed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sa_pattern_extension_3ee1fc2ec38403101cae1933e40131ed</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-07 11:15:12</sys_updated_on>
+    </sa_pattern_extension>
+</record_update>

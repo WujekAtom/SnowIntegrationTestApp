@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sa_pattern">
+    <sa_pattern action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <ci_type>cmdb_ci_appl_generic</ci_type>
+        <cpattern_type>2</cpattern_type>
+        <description/>
+        <directory>false</directory>
+        <enforce_proc_classy>false</enforce_proc_classy>
+        <invoke_per_account>false</invoke_per_account>
+        <metadata_id>4df968fec33732101cae1933e4013167</metadata_id>
+        <name>Wordpress steps</name>
+        <ndl>library {&#13;
+	name = "Wordpress steps"&#13;
+	id = "4df968fec33732101cae1933e4013167"&#13;
+	description = "Wordpress steps"&#13;
+	step {&#13;
+		name = "Set www directory"&#13;
+		set_attr {&#13;
+			"www_directory"&#13;
+			"/var/www"&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Search for wordpress dir"&#13;
+		runcmd_to_var {&#13;
+			cmd = concat {&#13;
+				"ls -1 "&#13;
+				get_attr {"www_directory"}&#13;
+			}&#13;
+			execution_mode = "DEFAULT"&#13;
+			var_names = "wp_dir"&#13;
+			parsing_strategy = delimited_parsing {&#13;
+				include_lines_pattern = "wordpress"&#13;
+				selected_positions = 1&#13;
+			}&#13;
+			if_not_found_do = nop {}&#13;
+			cache_flag = 0&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Check if wp_dir is not empty"&#13;
+		if {&#13;
+			condition = is_not_empty {get_attr {"wp_dir"}}&#13;
+			on_true = runcmd_to_var {&#13;
+				cmd = concat {&#13;
+					"cat "&#13;
+					get_attr {"www_directory"}&#13;
+					"/"&#13;
+					get_attr {"wp_dir"}&#13;
+					"/wp-includes/version.php"&#13;
+				}&#13;
+				execution_mode = "DEFAULT"&#13;
+				var_names = table {&#13;
+					name = "wp_raw"&#13;
+					col_names = "wp_version"&#13;
+				}&#13;
+				parsing_strategy = delimited_parsing {&#13;
+					include_lines_pattern = "wp_version"&#13;
+					exclude_lines_pattern = "@global"&#13;
+					delimiters = "'"&#13;
+					selected_positions = 2&#13;
+				}&#13;
+				if_not_found_do = nop {}&#13;
+				cache_flag = 0&#13;
+			}&#13;
+			on_false = nop {}&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Set config file"&#13;
+		set_attr {&#13;
+			"wp_raw[*].config_file"&#13;
+			concat {&#13;
+				get_attr {"www_directory"}&#13;
+				"/"&#13;
+				get_attr {"wp_dir"}&#13;
+				"/wp-config.php"&#13;
+			}&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Set ip address"&#13;
+		set_attr {&#13;
+			"wp_raw[*].ip_address"&#13;
+			get_attr {"entry_point.ip_address"}&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Set CI fields"&#13;
+		transform {&#13;
+			src_table_name = "wp_raw"&#13;
+			target_table_name = "x_1044869_tomek_0_cmdb_ci_u_custom_web_app"&#13;
+			operation {&#13;
+				set_field {&#13;
+					field_name = "u_version"&#13;
+					value = get_attr {"wp_raw[1].wp_version"}&#13;
+				}&#13;
+				set_field {&#13;
+					field_name = "ip_address"&#13;
+					value = get_attr {"wp_raw[1].ip_address"}&#13;
+				}&#13;
+				set_field {&#13;
+					field_name = "name"&#13;
+					value = "Wordpress"&#13;
+				}&#13;
+			}&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Create connection to Apache"&#13;
+		create_connection {&#13;
+			connection_type = APPLICATION_FLOW&#13;
+			target_ci_type = "x_1044869_tomek_0_cmdb_ci_u_custom_web_app"&#13;
+			entry_point_type = "cmdb_ci_endpoint_http"&#13;
+			attributes {&#13;
+				attribute {&#13;
+					name = "host"&#13;
+					value = get_attr {"entry_point.host"}&#13;
+				}&#13;
+				attribute {&#13;
+					name = "port"&#13;
+					value = get_attr {"entry_point.port"}&#13;
+				}&#13;
+				attribute {&#13;
+					name = "protocol"&#13;
+					value = get_attr {"entry_point.protocol"}&#13;
+				}&#13;
+				attribute {&#13;
+					name = "url"&#13;
+					value = get_attr {"entry_point.url"}&#13;
+				}&#13;
+			}&#13;
+			is_artificial = "false"&#13;
+			traffic_based = "false"&#13;
+		}&#13;
+	}&#13;
+	step {&#13;
+		name = "Untitled Step"&#13;
+		set_attr {&#13;
+			"tmp"&#13;
+			"Final step"&#13;
+		}&#13;
+	}&#13;
+}&#13;
+</ndl>
+        <parent/>
+        <serverless>false</serverless>
+        <source/>
+        <sys_class_name>sa_pattern</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-26 19:03:12</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4df968fec33732101cae1933e4013167</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>Wordpress steps</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_replace/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sa_pattern_4df968fec33732101cae1933e4013167</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-07 16:25:39</sys_updated_on>
+        <version/>
+    </sa_pattern>
+</record_update>

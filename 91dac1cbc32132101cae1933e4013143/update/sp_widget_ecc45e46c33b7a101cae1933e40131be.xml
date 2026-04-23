@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, $window) {
+  /* widget controller */
+  var c = this;
+
+  c.openProducer = function() {
+    var url = 'https://dev287724.service-now.com/sp?id=' 
+              + c.data.pageId 
+              + '&sys_id=' 
+              + c.data.producerSysId;
+    $window.location.href = url;
+  };
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Report problem tile</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.producerSysId = '33fde7e1c3ff76101cae1933e4013149'; // Twój sys_id
+  data.pageId = 'sc_cat_item'; // page id katalogu w portalu
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-24 18:54:32</sys_created_on>
+        <sys_id>ecc45e46c33b7a101cae1933e40131be</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Report problem tile</sys_name>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sp_widget_ecc45e46c33b7a101cae1933e40131be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-24 19:12:46</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default text-center">
+  <div class="panel-body">
+    <span class="fa fa-exclamation-circle fa-3x" aria-hidden="true"></span>
+    <h3>Report problem to IT</h3>
+    <p>Quickly report an IT issue from here.</p>
+    <button class="btn btn-primary" ng-click="c.openProducer()">
+      Open form
+    </button>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>
