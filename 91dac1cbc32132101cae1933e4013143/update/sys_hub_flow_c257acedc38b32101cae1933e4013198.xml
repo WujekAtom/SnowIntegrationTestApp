@@ -3,6 +3,7 @@
         <access>public</access>
         <acls/>
         <active>false</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
         <annotation/>
         <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,viewActivatedIn=naturalLanguage</attributes>
         <authored_on_release_version>27800</authored_on_release_version>
@@ -50,6 +51,7 @@
         <type>flow</type>
         <updation_source/>
         <version>2</version>
+        <version_record>0efb29cc931647d04aa43d6efaba105d</version_record>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=c257acedc38b32101cae1933e4013198"/>
     <sys_variable_value action="delete_multiple" query="document_key=c257acedc38b32101cae1933e4013198"/>
@@ -116,6 +118,7 @@
         <order>100</order>
         <primary>false</primary>
         <read_only>false</read_only>
+        <read_only_option/>
         <read_roles/>
         <reference/>
         <reference_cascade_rule/>
@@ -200,6 +203,7 @@
         <order>101</order>
         <primary>false</primary>
         <read_only>false</read_only>
+        <read_only_option/>
         <read_roles/>
         <reference/>
         <reference_cascade_rule/>
@@ -278,11 +282,11 @@
         <sys_created_on>2026-02-13 14:55:03</sys_created_on>
         <sys_id>12f760a1c3cb32101cae1933e4013128</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Table Name</sys_name>
         <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
         <sys_policy/>
         <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_c257acedc38b32101cae1933e4013198_table_name_en</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-02-13 14:55:03</sys_updated_on>
         <url/>
@@ -301,11 +305,11 @@
         <sys_created_on>2026-02-13 14:55:03</sys_created_on>
         <sys_id>1ef760a1c3cb32101cae1933e4013122</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Record</sys_name>
         <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
         <sys_policy/>
         <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_c257acedc38b32101cae1933e4013198_current_en</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-02-13 14:55:03</sys_updated_on>
         <url/>

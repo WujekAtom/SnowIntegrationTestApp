@@ -78,16 +78,17 @@ CardService.prototype = {
         var newTask = this.cardRepo.createNewTask();
         newTask.short_description = payload.short_description;
         newTask.description = payload.u_card_content;
-		newTask.correlation_id = payload.u_trello_card_id;
+		// newTask.correlation_id = payload.u_trello_card_id;
+		newTask.u_correlation_id = payload.u_trello_card_id;
         this.cardRepo.save(newTask);
 
         // Store task's sys_id to assign it to new card
         var taskId = newTask.getValue('sys_id');
 
-        // STEP 2: create new ard, assign values from payload, assign task id
+        // STEP 2: create new card, assign values from payload, assign task id
         var newCard = this.cardRepo.createNewCard();
         newCard.task = taskId;
-        newCard.board = '91428defc3ba72101cae1933e40131c3';
+        newCard.board = 'e61e3f9293d103104aa43d6efaba1065';		// TODO: move to system properties; create configuration site for integration
         newCard.lane = this.cardRepo.getListID(payload.u_list_name);
         newCard.u_source = payload.u_source;
         newCard.u_trello_card_id = payload.u_trello_card_id;
@@ -107,13 +108,13 @@ CardService.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-02-22 17:38:36</sys_created_on>
         <sys_id>a7a3ab98c3db32101cae1933e40131cd</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>CardService</sys_name>
         <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
         <sys_update_name>sys_script_include_a7a3ab98c3db32101cae1933e40131cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-03-08 19:25:36</sys_updated_on>
+        <sys_updated_on>2026-06-09 16:38:59</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_wdf_external_connector_mapping">
+    <sys_wdf_external_connector_mapping action="INSERT_OR_UPDATE">
+        <asset_id>91dac1cbc32132101cae1933e4013143</asset_id>
+        <connector_name>Tomek_integration</connector_name>
+        <connector_type display_value="">7bf7f2123decf210f87762d639ed247b</connector_type>
+        <external_system/>
+        <sys_class_name>sys_wdf_external_connector_mapping</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-18 04:46:14</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>3b0be41f934e0f904aa43d6efaba10af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Tomek_integration</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+        <sys_update_name>sys_wdf_external_connector_mapping_3b0be41f934e0f904aa43d6efaba10af</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-18 04:46:14</sys_updated_on>
+        <table_name>sys_scope</table_name>
+    </sys_wdf_external_connector_mapping>
+</record_update>

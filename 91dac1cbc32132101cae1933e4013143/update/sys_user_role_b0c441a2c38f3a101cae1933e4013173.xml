@@ -4,6 +4,8 @@
         <can_delegate>true</can_delegate>
         <description/>
         <elevated_privilege>false</elevated_privilege>
+        <encryption_context/>
+        <federated_id>tXLyqfHe4amBr8XGWl+gm226pDptwjBRz+7eKEtwzDg=</federated_id>
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_1044869_tomek_0.event_cache_user</name>

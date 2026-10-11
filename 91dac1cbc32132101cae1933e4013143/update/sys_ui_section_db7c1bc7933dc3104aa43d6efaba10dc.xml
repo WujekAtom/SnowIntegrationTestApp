@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="db7c1bc7933dc3104aa43d6efaba10dc" sys_domain="global" table="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>name</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>737c1bc7933dc3104aa43d6efaba10e0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>version</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>377c1bc7933dc3104aa43d6efaba10e3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>operational_status</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>7b7c1bc7933dc3104aa43d6efaba10e2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>bb7c1bc7933dc3104aa43d6efaba10e4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>tcp_port</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>bf7c1bc7933dc3104aa43d6efaba10e1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>install_date</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>ff7c1bc7933dc3104aa43d6efaba10e3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>category</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>3b7c5bc7933dc3104aa43d6efaba1049</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>777c1bc7933dc3104aa43d6efaba10e5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>short_description</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>f37c5bc7933dc3104aa43d6efaba104a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>ui_ng_relation_formatter.xml</element>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_id>bf7c5bc7933dc3104aa43d6efaba104a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter display_value="CI Relations">b62309137f32310009fedf92bdfa912b</sys_ui_formatter>
+            <sys_ui_section caption="NULL" display_value="" name="x_1044869_tomek_0_cmdb_ci_u_custom_web_app" sys_domain="global" view="Default view">db7c1bc7933dc3104aa43d6efaba10dc</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <type>formatter</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_1044869_tomek_0_cmdb_ci_u_custom_web_app</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-05 12:47:18</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>db7c1bc7933dc3104aa43d6efaba10dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1044869_tomek_0_cmdb_ci_u_custom_web_app</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
+            <sys_update_name>sys_ui_section_db7c1bc7933dc3104aa43d6efaba10dc</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-05 12:47:18</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

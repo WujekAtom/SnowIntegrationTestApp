@@ -4,6 +4,8 @@
         <can_delegate>true</can_delegate>
         <description>Integration user role</description>
         <elevated_privilege>false</elevated_privilege>
+        <encryption_context/>
+        <federated_id>CfIp6tC2ifUPT+f38GbzSCLM8ya5qx9KzhZKcSaA0b0=</federated_id>
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_1044869_tomek_0.integration_user_role</name>

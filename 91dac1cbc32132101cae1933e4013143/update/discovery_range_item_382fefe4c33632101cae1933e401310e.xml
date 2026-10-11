@@ -7,7 +7,7 @@
         <netmask/>
         <network_ip/>
         <parent/>
-        <schedule display_value="Docker-Debian">1d9b2720c33632101cae1933e4013105</schedule>
+        <schedule/>
         <start_ip_address/>
         <summary>172.17.0.2</summary>
         <sys_class_name>discovery_range_item</sys_class_name>

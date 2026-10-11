@@ -27,8 +27,9 @@
         <sys_update_name>sys_rest_message_fn_3b511861c30b32101cae1933e401312f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-02-13 17:06:31</sys_updated_on>
+        <use_auth_mid_server/>
         <use_basic_auth>false</use_basic_auth>
-        <use_mid_server display_value="mid_docker">0d2d5be8c37232101cae1933e40131a1</use_mid_server>
+        <use_mid_server display_value="">0d2d5be8c37232101cae1933e40131a1</use_mid_server>
         <use_mutual_auth>false</use_mutual_auth>
     </sys_rest_message_fn>
 </record_update>

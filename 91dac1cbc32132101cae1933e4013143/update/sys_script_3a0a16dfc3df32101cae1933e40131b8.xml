@@ -70,7 +70,7 @@
         "correlation_id": data_u_correlation_id,
 		"source_system": data_source_system,
 		"trello_card_id": data_u_trello_card_id,
-		"source_url": "https://dev287724.service-now.com",
+		"source_url": "https://dev342970.service-now.com",
         "data": {
             "number": data_number,
             "short_description": data_short_desc,
@@ -107,7 +107,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>3a0a16dfc3df32101cae1933e40131b8</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>Send to Trello-NiFi</sys_name>
         <sys_overrides/>
         <sys_package display_value="Tomek_integration" source="x_1044869_tomek_0">91dac1cbc32132101cae1933e4013143</sys_package>
@@ -115,7 +115,7 @@
         <sys_scope display_value="Tomek_integration">91dac1cbc32132101cae1933e4013143</sys_scope>
         <sys_update_name>sys_script_3a0a16dfc3df32101cae1933e40131b8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-14 19:40:00</sys_updated_on>
+        <sys_updated_on>2026-06-08 19:18:02</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

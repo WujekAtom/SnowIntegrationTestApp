@@ -2,6 +2,7 @@
     <sys_alias action="INSERT_OR_UPDATE">
         <configuration_template/>
         <connection_type>sys_connection</connection_type>
+        <description/>
         <id>x_1044869_tomek_0.DEV287724</id>
         <is_internal>false</is_internal>
         <multiple_connections>false</multiple_connections>
